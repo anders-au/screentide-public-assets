@@ -1,0 +1,11 @@
+name: Validate content policy
+on:
+  pull_request:
+    paths: ['moderation/**', '.github/scripts/validate-content-policy.py']
+  workflow_dispatch:
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 .github/scripts/validate-content-policy.py moderation/tidbits.v1.json
